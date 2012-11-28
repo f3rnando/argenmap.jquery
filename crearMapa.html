@@ -238,15 +238,15 @@
 						$('#mapaDemo').centro($(this).data('lat'),$(this).data('lon')).zoom(12);
 						if($('#mapaDemo').data('argenmap').marcadores.length > 0)
 						{
-							$('#mapaDemo').modificarMarcador("Marcador",{lon:$(this).data('lon'),lat:$(this).data('lat'),contenido:$('#contenidoMarcador').text()});
+							$('#mapaDemo').modificarMarcador("Marcador",{lon:$(this).data('lon'),lat:$(this).data('lat'),contenido:$('#contenidoMarcador').val()});
 						}else{
-							$('#mapaDemo').agregarMarcador({lon:$(this).data('lon'),lat:$(this).data('lat'),contenido:$('#contenidoMarcador').text()});
+							$('#mapaDemo').agregarMarcador({lon:$(this).data('lon'),lat:$(this).data('lat'),contenido:$('#contenidoMarcador').val()});
 						}
             return false;
           }
         );
 				$('#actualizarInfo').click(function(e){
-					$('#mapaDemo').modificarMarcador("Marcador",{contenido:$('#contenidoMarcador').text()});
+					$('#mapaDemo').modificarMarcador("Marcador",{contenido:$('#contenidoMarcador').val()});
 				});
 				$('#anchoDiv').click(function(e){
 					var a = $.isNumeric($('#anchoDivVal').val()) ? $('#anchoDivVal').val() : 'auto';
