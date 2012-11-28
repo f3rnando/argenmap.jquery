@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ArgenMap · Guía</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="bootstrap/css/docs.css" rel="stylesheet">
+    <link href="bootstrap/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons 
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+		-->
+		<!-- este js va aca para poder ejecutar codigo inline -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">ArgenMap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Inicio</a>
+              </li>
+              <li class="dropdown">
+                <a href="./guias.html" class="dropdown-toggle" data-toggle="dropdown">Guías
+								<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="./guias.html#como-empezar">Cómo empezar</a></li>
+									<li><a href="./guias.html#un-mapa">Un mapa</a></li>
+									<li><a href="./guias.html#capas">Capas</a></li>
+								</ul>
+              </li>
+              <li class="">
+                <a href="#">Documentación</a>
+              </li>
+              <li class="">
+                <a href="#">Desarrolladores</a>
+              </li>
+              <li class="active">
+                <a href="./crearMapa.html">Crea un mapa para tu sitio</a>
+              </li>
+              <li class="">
+                <a href="http://github.com/CGastrell/argenmap.openlayers.jquery">Ver en Github</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead" id="overview" style="padding:8px 0">
+  <div class="container">
+    <h1>ArgenMap v2</h1>
+    <p class="lead">ArgenMap + jQuery + OpenLayers</p>
+  </div>
+</header>
+
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+				<h4>Configurar tu mapa</h4>
+				<div class="accordion" id="accordion2">
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+								Propiedades
+							</a>
+						</div>
+						<div id="collapseOne" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<form class="form-inline">
+									<div class="clearfix">
+										<strong>Ancho:</strong>
+										<div class="input-append pull-right">
+											<input class="span1" value="800" id="anchoDivVal" type="text">
+											<button class="btn" id="anchoDiv" type="button"><i class="icon-ok-sign"></i></button>
+										</div>
+									</div>
+									<div class="clearfix">
+										<strong>Alto:</strong>
+										<div class="input-append pull-right">
+											<input class="span1" value="350" id="altoDivVal" type="text">
+											<button class="btn" id="altoDiv" type="button"><i class="icon-ok-sign"></i></button>
+										</div>
+									</div>
+									<!--
+									<p>
+									<strong>Ancho:</strong> <input type="text" class="input-small pull-right" value="800">
+									</p>
+									<p>
+									<strong>Alto:</strong> <input type="text" class="input-small pull-right" value="350">
+									</p>
+									-->
+									<p class="clearfix">
+									<label for="tipoDeMapa"><strong>Tipo de mapa:</strong></label><br />
+									<select id="tipoDeMapa">
+										<option value="Base IGN">Base IGN</option>
+										<option value="Satélite">Satélite</option>
+									</select>
+									</p>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+								Marcador
+							</a>
+						</div>
+						<div id="collapseTwo" class="accordion-body collapse">
+							<div class="accordion-inner">
+								<form class="form-search form-horizontal">
+									<label>Buscar dirección</label>
+									<input type="text" id="geosearch" class="span2 search-query" placeholder="Av. Cabildo 381, Buenos Aires">
+                  <!-- <div class="input-append">
+										<button type="submit" class="btn"><i class="icon-search"></i></button>
+									</div> -->
+									
+									<h6>Información del marcador <small>puedes usar html</small></h6>
+									<textarea id="contenidoMarcador" rows="3"><h1>Marcador</h1>Este es el contenido del marcador</textarea>
+									<br /><small>Dejar en blanco para que el marcador no sea "clickeable"</small>
+									<br /><button id="actualizarInfo" class="pull-right btn btn-mini btn-primary" type="button">Actualizar <i class="icon-refresh"></i></button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<div class="accordion-group">
+						<div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
+								Obtené el código
+							</a>
+						</div>
+						<div id="collapse3" class="accordion-body collapse">
+							<div class="accordion-inner">
+								textarea con el codigo final
+							</div>
+						</div>
+					</div>
+				</div>
+      </div>
+      <div class="span9">
+
+
+        <!-- Examples
+        ================================================== -->
+        <section id="examples">
+          <div class="resultado shadowed" id="mapaDemo" style="width:800px;height:350px; margin:0 auto;">
+					</div>
+        </section>
+				
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Documentación diseñada con todo el amor del mundo <a href="http://github.com/twitter/bootstrap" target="_blank">Bootstrap</a> por <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+      </div>
+    </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/google-code-prettify/prettify.js"></script>
+
+    <script src="http://mapa.ign.gob.ar/cg/OpenLayers-2.12/build/OpenLayers-argenmap-closure.js"></script>
+    <script src="https://raw.github.com/CGastrell/argenmap.openlayers.jquery/master/argenmap.jquery.js"></script>
+		
+    <!-- Codigo para la pagina
+    ================================================== -->
+		<script>
+			var gc;
+			var lastResults = [];
+			$(document).ready(function(){
+				var $window = $(window);
+				// side bar
+				$('.bs-docs-sidenav').affix({
+					offset: {
+						top: function () { return $window.width() <= 980 ? 290 : 210 }
+					, bottom: 270
+					}
+				});
+
+				// make code pretty
+				window.prettyPrint && prettyPrint();
+				gc = new google.maps.Geocoder();
+        // var callback = function(e){console.log(e);}
+        $(document).on("click",'a.georesult',function(e){
+            //console.log($(this).data('coords'));
+            $('#geosearch').popover('hide');
+						$('#mapaDemo').centro($(this).data('lat'),$(this).data('lon')).zoom(12);
+						if($('#mapaDemo').data('argenmap').marcadores.length > 0)
+						{
+							$('#mapaDemo').modificarMarcador("Marcador",{lon:$(this).data('lon'),lat:$(this).data('lat'),contenido:$('#contenidoMarcador').text()});
+						}else{
+							$('#mapaDemo').agregarMarcador({lon:$(this).data('lon'),lat:$(this).data('lat'),contenido:$('#contenidoMarcador').text()});
+						}
+            return false;
+          }
+        );
+				$('#actualizarInfo').click(function(e){
+					$('#mapaDemo').modificarMarcador("Marcador",{contenido:$('#contenidoMarcador').text()});
+				});
+				$('#anchoDiv').click(function(e){
+					var a = $.isNumeric($('#anchoDivVal').val()) ? $('#anchoDivVal').val() : 'auto';
+					$('#mapaDemo').css('width',a);
+				});
+				$('#altoDiv').click(function(e){
+					var a = $.isNumeric($('#altoDivVal').val()) ? $('#altoDivVal').val() : 'auto';
+					$('#mapaDemo').css('height',a);
+				});
+				$('#tipoDeMapa').change(function(e){
+					$('#mapaDemo').capaBase($(this).val());
+				});
+        $('#geosearch').typeahead({
+					source: function( query, callback) {
+
+							var resultsArr = new Array();
+							lastResults = new Array();
+							// query.replace(".","\.");
+							gc.geocode({ 'address': query }, function (results, status) {
+
+								if (status == google.maps.GeocoderStatus.OK) {
+									// console.log(results);
+									// for(i=0; i < results.length; i++) {
+									//     if(results[i].formatted_address) {
+									//         resultsArr[i] = results[i].formatted_address;    
+									//     }
+									// };
+									$('#geosearch').popover('destroy');
+									var popoverContent = "";
+									$.each(results,function(i,e){
+										// console.log(e);
+										resultsArr.push(e.formatted_address);
+										lastResults.push(e);
+										popoverContent += "<a class='georesult' href='#' data-lat='" + e.geometry.location.lat() + "' data-lon='" + e.geometry.location.lng() + "'>" + e.formatted_address + "</a><br />";
+									});
+
+									// callback(resultsArr);
+									$('#geosearch').popover({
+										html: true,
+										placement: 'right',
+										title: 'Resultados',
+										trigger: 'manual',
+										content: popoverContent
+									}).popover('show');
+								};
+							});
+					},
+					items: 5
+			});
+			$('#mapaDemo').argenmap();
+		});
+		</script>
+
+    <!-- Analytics
+    ================================================== -->
+    <script>
+      var _gauges = _gauges || [];
+      //(function() {
+      //  var t   = document.createElement('script');
+      //  t.type  = 'text/javascript';
+      //  t.async = true;
+      //  t.id    = 'gauges-tracker';
+      //  t.setAttribute('data-site-id', '4f0dc9fef5a1f55508000013');
+      //  t.src = '//secure.gaug.es/track.js';
+      //  var s = document.getElementsByTagName('script')[0];
+      //  s.parentNode.insertBefore(t, s);
+      //})();
+    </script>
+
+  </body>
+</html>
