@@ -490,6 +490,7 @@ div.resultado label {
 div.resultado input[type="radio"], div.resultado input[type="checkbox"] {
 	margin:0;
 }
+.shadowed {box-shadow: 0px -10px 30px #555;}
 /* Make tables spaced out a bit more */
 h2 + table,
 h3 + table,
