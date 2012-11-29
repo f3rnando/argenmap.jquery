@@ -278,7 +278,8 @@
 					var scriptLine = '$("#mapa").argenmap()\n  .centro('+c[0]+','+c[1]+')\n  .zoom('+z+')';
 					if(base == 'Satélite') scriptLine += '\n  .capaBase("'+base+'")';
 					if($('#mapaDemo').data('argenmap').marcadores.length > 0) {
-						var coords = $('#mapaDemo').data('argenmap').marcadores[0].lonlat;
+						var coords = $('#mapaDemo').data('argenmap').marcadores[0].lonlat.clone();
+						coords.transform('EPSG:3857','EPSG:4326');
 						scriptLine += '\n  .agregarMarcador({';
 						scriptLine += '\n    contenido:"'+$('#contenidoMarcador').val()+'",';
 						scriptLine += '\n    lat: '+coords.lat+',';
