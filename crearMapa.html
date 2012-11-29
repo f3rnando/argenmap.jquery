@@ -321,7 +321,7 @@
 							var resultsArr = new Array();
 							lastResults = new Array();
 							// query.replace(".","\.");
-							gc.geocode({ 'address': query }, function (results, status) {
+							gc.geocode({ 'address': query, region:'ar' }, function (results, status) {
 
 								if (status == google.maps.GeocoderStatus.OK) {
 									// console.log(results);
