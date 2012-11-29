@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>ArgenMap · Guía</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="plugin de jquery para crear mapas de argentina con datos oficiales del Instituto Geográfico Nacional argentino">
+    <meta name="author" content="Christian Gastrell">
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -56,6 +56,7 @@
 									<li><a href="./guias.html#como-empezar">Cómo empezar</a></li>
 									<li><a href="./guias.html#un-mapa">Un mapa</a></li>
 									<li><a href="./guias.html#capas">Capas</a></li>
+									<li><a href="./guias.html#marcadores">Marcadores</a></li>
 								</ul>
               </li>
               <li class="">
@@ -107,14 +108,14 @@
 										<strong>Ancho:</strong>
 										<div class="input-append pull-right">
 											<input class="span1" value="800" id="anchoDivVal" type="text">
-											<button class="btn" id="anchoDiv" type="button"><i class="icon-ok-sign"></i></button>
+											<!-- <button class="btn" id="anchoDiv" type="button"><i class="icon-ok-sign"></i></button> -->
 										</div>
 									</div>
 									<div class="clearfix">
 										<strong>Alto:</strong>
 										<div class="input-append pull-right">
 											<input class="span1" value="350" id="altoDivVal" type="text">
-											<button class="btn" id="altoDiv" type="button"><i class="icon-ok-sign"></i></button>
+											<!-- <button class="btn" id="altoDiv" type="button"><i class="icon-ok-sign"></i></button> -->
 										</div>
 									</div>
 									<!--
@@ -155,7 +156,7 @@
 									<h6>Información del marcador <small>puedes usar html</small></h6>
 									<textarea id="contenidoMarcador" rows="3"><h1>Marcador</h1>Este es el contenido del marcador</textarea>
 									<br /><small>Dejar en blanco para que el marcador no sea "clickeable"</small>
-									<br /><button id="actualizarInfo" class="pull-right btn btn-mini btn-primary" type="button">Actualizar <i class="icon-refresh"></i></button>
+									<br /><button id="actualizarInfo" class="pull-right btn btn-mini btn-primary" type="button">Actualizar marcador <i class="icon-refresh"></i> </button>
 								</form>
 							</div>
 						</div>
@@ -171,7 +172,7 @@
 					</div>
 					
 					<!-- modal -->
-					<div id="myModal" tabindex="-1" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="myModal" tabindex="-1" style="width:900px;margin-left:-450px;" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							<h3>Código</h3>
@@ -183,12 +184,12 @@
 &lt;script type=&quot;text/javascript&quot; src=&quot;http://mapa.ign.gob.ar/cg/argenmap-v2/build&quot;&gt;&lt;/script&gt;
 </pre>
 							<p>Luego agrega este <code>DIV</code> donde quieras ubicar el mapa:</p>
-							<div class="well" id="theDivIsTheLaw">
+							<div class="well well-small" id="theDivIsTheLaw">
 							</div>
 							<p>... y por último, inserta este código en un tag <code>SCRIPT</code></p>
 							<div class="alert alert-info"><strong>Nota:</strong> El código JavaScript debe
 							ejecutarse cuando la página terminó de cargarse</div>
-							<textarea id="theCodeIsTheLaw" rows=6 style="width:100%"></textarea>
+							<textarea id="theCodeIsTheLaw" rows=6 style="width:100%;font-size:13px;"></textarea>
 						</div>
 						<div class="modal-footer">
 							<a data-dismiss="modal" aria-hidden="true" class="btn">Cerrar</a>
@@ -290,19 +291,26 @@
 					$('#myModal').modal();
 				});
 				$('#actualizarInfo').click(function(e){
-					//$('#mapaDemo').modificarMarcador("Marcador",{contenido:$('#contenidoMarcador').val()});
-					$('#mapaDemo').argenmap()
-						.centro(-33,-57)
-						.zoom(7);
+					$('#mapaDemo').modificarMarcador("Marcador",{contenido:$('#contenidoMarcador').val()});
 				});
+				$('#anchoDivVal').blur(function(e){
+					var a = $.isNumeric($(this).val()) ? $(this).val() : 'auto';
+					$('#mapaDemo').css('width',a);
+				});
+				$('#altoDivVal').blur(function(e){
+					var a = $.isNumeric($(this).val()) ? $(this).val() : '300';
+					$('#mapaDemo').css('height',a);
+				});
+				/*
 				$('#anchoDiv').click(function(e){
 					var a = $.isNumeric($('#anchoDivVal').val()) ? $('#anchoDivVal').val() : 'auto';
 					$('#mapaDemo').css('width',a);
 				});
 				$('#altoDiv').click(function(e){
-					var a = $.isNumeric($('#altoDivVal').val()) ? $('#altoDivVal').val() : 'auto';
+					var a = $.isNumeric($('#altoDivVal').val()) ? $('#altoDivVal').val() : '300';
 					$('#mapaDemo').css('height',a);
 				});
+				*/
 				$('#tipoDeMapa').change(function(e){
 					$('#mapaDemo').capaBase($(this).val());
 				});

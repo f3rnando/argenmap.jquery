@@ -66,6 +66,7 @@
 									<li><a href="./guias.html#como-empezar">Cómo empezar</a></li>
 									<li><a href="./guias.html#un-mapa">Un mapa</a></li>
 									<li><a href="./guias.html#capas">Capas</a></li>
+									<li><a href="./guias.html#marcadores">Marcadores</a></li>
 								</ul>
               </li>
               <li class="">
@@ -107,8 +108,8 @@
           <li><a href="#un-mapa"><i class="icon-chevron-right"></i> Un mapa</a></li>
           <li><a href="#capas"><i class="icon-chevron-right"></i> Capas</a></li>
           <li><a href="#marcadores"><i class="icon-chevron-right"></i> Marcadores</a></li>
-          <li><a href="#ejemplos"><i class="icon-chevron-right"></i> Más ejemplos</a></li>
-          <!-- <li><a href="#what-next"><i class="icon-chevron-right"></i> What next?</a></li> -->
+          <!-- <li><a href="#ejemplos"><i class="icon-chevron-right"></i> Más ejemplos</a></li>
+          <li><a href="#what-next"><i class="icon-chevron-right"></i> What next?</a></li> -->
         </ul>
       </div>
       <div class="span9">
@@ -740,10 +741,9 @@ $('#prueba').argenmap().agregarMarcador({
 <span class="nocode"><a id="marcadores-demo1b" class="btn btn-mini btn-primary" href="#marcadores-demo1">Ejecutar ejemplo</a></span>
 
 $('#prueba').argenmap().agregarMarcador({
-  lon:-57,
-  lat:-35,
-  contenido: '&lt;h1&gt;Marcador&lt;/h1&gt;&lt;p&gt;Este es el contenido del marcador&lt;/p&gt;',
-  mostrarConClick: true
+  lon:-58,
+  lat:-32,
+  contenido: '&lt;h1&gt;Marcador&lt;/h1&gt;&lt;p&gt;Este es el contenido del marcador&lt;/p&gt;'
 });
 <span class="nocode"><a id="marcadores-demo1c" class="btn btn-mini btn-primary" href="#marcadores-demo1">Ejecutar ejemplo</a></span>
 </pre>
@@ -759,7 +759,7 @@ $('#prueba').argenmap().agregarMarcador({
 	$('#marcadores-demo1c').click(function(){
 		$('#marcadores-demo1-resultado').argenmap().agregarMarcador(
 		{
-			lonlat:[-34,-56],
+			lonlat:[-32,-58],
 			contenido: '<h1>Marcador</h1><p>Este es el contenido del marcador</p>',
 			mostrarConClick: true
 		});
@@ -777,7 +777,7 @@ $('#prueba').argenmap().agregarMarcador({
 
 
         <!-- Examples
-        ================================================== -->
+        ==================================================
         <section id="examples">
           <div class="page-header">
             <h1>5. Examples</h1>
@@ -807,12 +807,12 @@ $('#prueba').argenmap().agregarMarcador({
             </li>
           </ul>
         </section>
-
+				-->
 
 
 
         <!-- Next
-        ================================================== -->
+        ================================================== 
         <section id="what-next">
           <div class="page-header">
             <h1>What next?</h1>
@@ -821,7 +821,7 @@ $('#prueba').argenmap().agregarMarcador({
           <a class="btn btn-large btn-primary" href="./scaffolding.html" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Next steps', 'Visit docs']);">Visit the Bootstrap docs</a>
           <a class="btn btn-large" href="./customize.html" style="margin-left: 5px;" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Next steps', 'Customize']);">Customize Bootstrap</a>
         </section>
-
+				-->
 
 
 
