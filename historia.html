@@ -29,15 +29,102 @@
 		<!-- este js va aca para poder ejecutar codigo inline -->
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	<style type="text/css">
+	    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+
+
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+    </style>
   </head>
 
-  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+  <body style="paddin-top:40px" data-spy="scroll" data-target=".bs-docs-sidebar">
 
     <!-- Navbar
     ================================================== -->
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <div class="container marketing">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -79,8 +166,8 @@
 ================================================== -->
 <header class="jumbotron subhead" id="overview" style="padding:8px 0">
   <div class="container">
-    <h1>ArgenMap v2 - SIG IGN</h1>
-    <p class="lead">ArgenMap + jQuery + OpenLayers</p>
+    <h1>ArgenMap v2 <small>El camino hasta el 2012</small></h1>
+    <p class="lead">SIG IGN + jQuery + OpenLayers</p>
   </div>
 </header>
 
@@ -91,33 +178,157 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-										
+			
         <ul class="nav nav-list bs-docs-sidenav">
-          <li class="active"><a href="#sig-igm"><i class="icon-chevron-right"></i> SIG IGM 2000 - 2008</a></li>
-          <li><a href="#sig-ign"><i class="icon-chevron-right"></i> SIG IGN 2009</a></li>
-          <li><a href="#capa-base-sig-ign"><i class="icon-chevron-right"></i> Capa Base SIG IGN 2009 - 2012</a></li>
-          <li><a href="#como-sigue"><i class="icon-chevron-right"></i> Cómo sigue</a></li>
+          <li class="active"><a href="#estilizacion"><i class="icon-chevron-right"></i>Estilización y capas base</a></li>
+          <li><a href="#geoserver"><i class="icon-chevron-right"></i>Geoserver</a></li>
+          <li><a href="#visualizador"><i class="icon-chevron-right"></i>Visualizador full screen</a></li>
+          <li><a href="#postgis"><i class="icon-chevron-right"></i>PostGIS</a></li>
+          <li><a href="#estadodelosmapas"><i class="icon-chevron-right"></i>Estado de las mapas en la web</a></li>
+          <li><a href="#argenmapv1"><i class="icon-chevron-right"></i>Argenmap.jQuery v1</a></li>
         </ul>
 
       </div>
       <div class="span9">
-				
-        <section id="sig-igm">
+        <section id="estilizacion">
+	  <div class="page-header">
+		  <h2 class="featurette-heading">Estilización y capas base. <span class="muted">Mucho SLD. Mucho geoserver</span></h2>
+	  </div>
+		<p class="lead">
+		La idea de <strong>apagar</strong> y <strong>prender</strong> capas estaba bien. Pero faltaba el laburo fino de diseñador gráfico de estilizar cada capa
+		para que todas prendidas tuvieran congruencia.
+		</p>
 
-					<div id="cubeContent">
-						<div id="cube">
-							<div id="sig-igm" class="face one"></div>
-							<div id="sig-ign" class="face two"></div>
-							<div id="capa-base-sig-ign" class="face three"></div>
-							<div class="face four"></div>
-							<div class="face five"></div>
-							<div class="face six"></div>
-						</div>
-					</div>
-
+		<div id="cubeContent">
+		<ul class="nav nav-pills">
+		  <li class="active"><a href="#">SIG IGM 2000-2008</a></li>
+		  <li><a href="#">SIG IGN 2009</a></li>
+		  <li><a href="#">Capa Base SIG IGN 2009 - 2012</a></li>
+		  <li><a href="#">Manual de Signos Cartográficos</a></li>
+		</ul>
+			<div id="cube">
+				<div id="sig-igm" class="face one"></div>
+				<div id="sig-ign" class="face two"></div>
+				<div id="capa-base-sig-ign" class="face three"></div>
+				<div id="capabase_msc" class="face four"></div>
+				<div class="face five"></div>
+				<div class="face six"></div>
+			</div>
+		</div>
+		<h2 style="margin-top:150px">Las capas base</h2>
+		<div class="row-fluid" >
+            <ul class="thumbnails">
+              <li class="span4">
+                <div class="thumbnail">
+                  <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 200px; " src="http://wms.ign.gob.ar/geoserver/wms?LAYERS=SIGN&STYLES=&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG%3A4326&BBOX=-65.286702316284,-32.026690246582,-64.995450180054,-31.832522155762&WIDTH=300&HEIGHT=200">
+                  <div class="caption">
+                    <h3>SIGN</h3>
+                    <p>63 SLD. 711 Reglas.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 200px; " src="http://wms.ign.gob.ar/geoserver/wms?LAYERS=capabasesigign&STYLES=&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG%3A4326&BBOX=-65.286702316284,-32.026690246582,-64.995450180054,-31.832522155762&WIDTH=300&HEIGHT=200">
+                  <div class="caption">
+                    <h3>capabasesigign</h3>
+                    <p>21 SLDs. 245 reglas.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="span4">
+                <div class="thumbnail">
+                  <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 200px; " src="http://wms.ign.gob.ar/geoserver/wms?LAYERS=capabase_msc&STYLES=&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG%3A4326&BBOX=-65.286702316284,-32.026690246582,-64.995450180054,-31.832522155762&WIDTH=300&HEIGHT=200">
+                  <div class="caption">
+                    <h3>capabase_msc</h3>
+                    <p>Hasta ahora 15 SLDs con 75 reglas en total.</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+		<h2 >Inconvenientes <span class="small">generacionales</small></h2>
+		<h3>El mito de los signos cartográficos</h3>
+		<p class="lead">
+		Cuando hicimos la capa base, no respetamos lo irrespetable. El manual de signos cartográficos <em>define</em> la representación gráfica
+		de los objetos que las cartas muestran pero en unidades de medida como cm. o mm. Además no representa en realidad, el trabajo que se realiza
+		en el área de cartografía. La mayor parte de los procedimientos era pura tradición oral.
+		</p>
 				
         </section>
-				<br class="clearfix" />
+		<section id="geoserver"style="clear:both">
+		<div class="page-header">
+			<h2 class="featurette-heading">Geoserver. <span class="muted">Un WMS como la gente</span></h2>
+		</div>
+		<p class="lead">
+		Empezamos con geoserver 1.x. Pusimos los shapefiles del SIG250 y los estilos SLD de la capa base.
+		</p>
+		</section>
+		<section id="visualizador"style="clear:both">
+			<div class="page-header">
+				<h2 class="featurette-heading">Visualizador full screen. <span class="muted">Oops! ahora se nota la calidad de los datos</span></h2>
+			</div>
+			<p class="lead">
+			Hicimos un visualizador en pantalla completa de esta capa base.
+			</p>
+			<p class="lead">
+			<a href="http://sig.ign.gob.ar">http://sig.ign.gob.ar</a>
+			</p>
+			<h2>GeoServer + ExtJS <small>era pre-geoext</small></h2>
+			<p class="lead">
+			Jugando con geoext hicimos un par de <em>panels</em> sin bordes y flotantes para que el mapa ocupara la pantalla entera
+			y las herramientas flotaran sobre el mapa.
+			</p>
+			<h2>Inconvenientes <small>generacionales</small></h2>
+			
+			<h3>Los errores del SIG250 era bien notorios<h3>
+			<p class="lead">
+			Ahora que el contraste entre capas no dependía de las capas que prendiera o apagar el usuario, empezó el miedo a la develación de los orígenes del SIG250. 
+			</p>
+			<h3>ExtJS come mucha memoria<h3>
+			<p class="lead">
+			En esa época, los browsers no estaban tan optimizados y ExtJS consumía mucho recurso. 
+			</p>
+		</section>
+		<section id="postgis"style="clear:both">
+		<div class="page-header">
+			<h2 class="featurette-heading">POSTGIS para el IGN<span class="muted">¿Ah che. y postgis, conocen?</span></h2>
+		</div>
+		<p class="lead">Miles de cursos de IDEs. Miles de veces se dijo POSTGIS pero, o el que te preguntaba no lo usaba, no sabía lo que era
+		o lo usaba sólo como depósito de datos sin mayor beneficio que un paquete de archivos shapefiles en un directoirio. <strong>Nadie editaba en POSTGIS</strong>.</p>
+		<h2>Inconvenientes</h2>
+		<p class="lead">
+		La codificación de los shapefiles del SIG250 era latin-1 (ISO-8859-1). Hicimos scripts de importación a postgis que tenían esto en cuenta para convertir a UTF-8
+		antes de generar los dumps SQL de las tablas.
+		</p>
+		</section>
+		<section id="estadodelosmapas"style="clear:both">
+		<div class="page-header">
+			<h2 class="featurette-heading">Los mapas de Argentina en la web<span class="muted"></span></h2>
+		</div>
+		<p class="lead">
+		Hicimos un relevamiento en base a búsquedas en google de mapas en sitios de organismos del estado para ver qué soluciones podíamos darle
+		con nuestra capa base. 
+		</p>
+		<p class="lead">
+		El 60% de los sitios usaban Google Mapas
+		</p>
+		<p class="lead">
+		<a href="http://www.ign.gob.ar/comunidad">http://www.ign.gob.ar/comunidad</a>
+		</p>
+		</section>
+		<section id="argenmapv1" style="clear:both">
+		<div class="page-header">
+			<h2 class="featurette-heading">Argenmap.jQuery v1</h2>
+		</div>
+		<p class="lead">
+		De todos los mapas, nos llamó la atención el del Ministerio de Desarrollo social por esta noticia en Infobae:
+		</p>
+		<p class="lead">
+		<a href="http://www.infobae.com/notas/566425-En-una-pagina-oficial-las-Islas-Malvinas-aparecen-como-Falkland-Islands.html">En una página oficial las Islas Malvinas aparecen como Falkland Islands</a>
+		</p>
+		</section>
+		<br class="clearfix" />
       </div>
     </div>
 
@@ -167,14 +378,19 @@
 				// make code pretty
 				window.prettyPrint && prettyPrint();
 				//$('.face').argenmap();
-				$('.one').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'SIG IGM 2000 - 2008',url:'http://sdi.ign.gob.ar/geoserver2/wms',capas:'capabaseigm'});
-				$('.six').argenmap();
-				$('.four').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'SIG IGN 2009',url:'http://sdi.ign.gob.ar/geoserver2/wms',capas:'SIGN'});
-				$('.nav li').click(function(){
+				$('.one').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'SIG IGM 2000 - 2008',url:'http://sdi.ign.gob.ar/geoserver2/wms',capas:'capabaseigm'})
+					.centro(-32.99634759618687, -60.704299840743474).zoom(10);
+				$('.six').argenmap().centro(-32.99634759618687, -60.704299840743474).zoom(10);
+				$('.four').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'SIG IGN 2009',url:'http://sdi.ign.gob.ar/geoserver2/wms',capas:'SIGN'})
+					.centro(-32.99634759618687, -60.704299840743474).zoom(10);
+				$('.five').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'MSC',url:'http://wms.ign.gob.ar/geoserver/wms',capas:'capabase_msc'})
+					.centro(-32.99634759618687, -60.704299840743474).zoom(10);
+				
+				$('#estilizacion .nav li').click(function(){
 					var i = $(this).index();
 					console.log(i);
 					container.move(coords[i]);
-					$('.nav li').removeClass('active');
+					$('#estilizacion .nav li').removeClass('active');
 					$(this).addClass('active');
 					return false;
 				});
