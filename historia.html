@@ -63,7 +63,7 @@
               <li class="">
                 <a href="#">Documentación</a>
               </li>
-              <li class="active">
+              <li class="">
                 <a href="./crearMapa.html">Crea un mapa para tu sitio</a>
               </li>
               <li class="">
@@ -79,7 +79,7 @@
 ================================================== -->
 <header class="jumbotron subhead" id="overview" style="padding:8px 0">
   <div class="container">
-    <h1>ArgenMap v2</h1>
+    <h1>ArgenMap v2 - SIG IGN</h1>
     <p class="lead">ArgenMap + jQuery + OpenLayers</p>
   </div>
 </header>
@@ -91,70 +91,33 @@
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
-				<h4>Configurar tu mapa</h4>
-				<div class="accordion" id="accordion2">
-					<div class="accordion-group">
-						<div class="accordion-heading">
-							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-								Propiedades
-							</a>
-						</div>
-						<div id="collapseOne" class="accordion-body collapse in">
-							<div class="accordion-inner">
-								ddd
-							</div>
-						</div>
-					</div>
-
-					<div class="accordion-group">
-						<div class="accordion-heading">
-							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-								Marcador
-							</a>
-						</div>
-						<div id="collapseTwo" class="accordion-body collapse">
-							<div class="accordion-inner">
-								ttt
-							</div>
-						</div>
-					</div>
-
-					<div class="accordion-group">
-						<div class="accordion-heading">
-							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
-								Obtené el código
-							</a>
-						</div>
-						<div id="collapseThree" class="accordion-body collapse">
-							<div class="accordion-inner">
-								fff
-							</div>
-						</div>
-					</div>
 										
-				</div>
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li class="active"><a href="#sig-igm"><i class="icon-chevron-right"></i> SIG IGM 2000 - 2008</a></li>
+          <li><a href="#sig-ign"><i class="icon-chevron-right"></i> SIG IGN 2009</a></li>
+          <li><a href="#capa-base-sig-ign"><i class="icon-chevron-right"></i> Capa Base SIG IGN 2009 - 2012</a></li>
+          <li><a href="#como-sigue"><i class="icon-chevron-right"></i> Cómo sigue</a></li>
+        </ul>
+
       </div>
       <div class="span9">
+				
+        <section id="sig-igm">
 
-
-        <!-- Examples
-        ================================================== -->
-        <section id="examples">
-
-<div id="cubeContent">
-	<div id="cube">
-		<div class="face one"></div>
-		<div class="face two"></div>
-		<div class="face three"></div>
-		<div class="face four"></div>
-		<div class="face five"></div>
-		<div class="face six"></div>
-	</div>
-</div>
+					<div id="cubeContent">
+						<div id="cube">
+							<div id="sig-igm" class="face one"></div>
+							<div id="sig-ign" class="face two"></div>
+							<div id="capa-base-sig-ign" class="face three"></div>
+							<div class="face four"></div>
+							<div class="face five"></div>
+							<div class="face six"></div>
+						</div>
+					</div>
 
 				
         </section>
-				
+				<br class="clearfix" />
       </div>
     </div>
 
@@ -181,7 +144,8 @@
     <script src="bootstrap/js/google-code-prettify/prettify.js"></script>
 
     <!-- <script src="http://mapa.ign.gob.ar/cg/OpenLayers-2.12/build/OpenLayers-argenmap-closure.js"></script> -->
-    <script src="http://www.ign.gob.ar/argenmap2/argenmap.jquery/build/argenmap.jquery.min.js"></script>
+    <script src="http://www.ign.gob.ar/argenmap2/argenmap.jquery/argenmap.jquery.min.js"></script>
+    <script src="javascripts/cube.js"></script>
 		
     <!-- Codigo para la pagina
     ================================================== -->
@@ -202,7 +166,18 @@
 
 				// make code pretty
 				window.prettyPrint && prettyPrint();
-				
+				//$('.face').argenmap();
+				$('.one').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'SIG IGM 2000 - 2008',url:'http://sdi.ign.gob.ar/geoserver2/wms',capas:'capabaseigm'});
+				$('.six').argenmap();
+				$('.four').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'SIG IGN 2009',url:'http://sdi.ign.gob.ar/geoserver2/wms',capas:'SIGN'});
+				$('.nav li').click(function(){
+					var i = $(this).index();
+					console.log(i);
+					container.move(coords[i]);
+					$('.nav li').removeClass('active');
+					$(this).addClass('active');
+					return false;
+				});
 		});
 		</script>
 
