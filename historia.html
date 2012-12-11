@@ -207,6 +207,8 @@
 		  <li><a href="#">SIG IGN 2009</a></li>
 		  <li><a href="#">Capa Base SIG IGN 2009 - 2012</a></li>
 		  <li><a href="#">Manual de Signos Cartográficos</a></li>
+		  <li><a href="#">Satélite</a></li>
+		  <li><a href="#">.</a></li>
 		</ul>
 			<div id="cube">
 				<div id="sig-igm" class="face one"></div>
@@ -461,7 +463,8 @@
 					.centro(-32.99634759618687, -60.704299840743474).zoom(10);
 				$('.two').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'MSC',url:'http://wms.ign.gob.ar/geoserver/wms',capas:'capabase_msc'})
 					.centro(-32.99634759618687, -60.704299840743474).zoom(10);
-				
+				$('.five').argenmap({tipo:'satelital'}).centro(-32.99634759618687, -60.704299840743474).zoom(10);
+				$('.three').argenmap({tipo:'satelital'}).centro(-52.05029841908872, -59.53886376288012).zoom(7);
 				$('#estilizacion .nav li').click(function(){
 					var i = $(this).index();
 					console.log(i);
