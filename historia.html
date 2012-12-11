@@ -327,9 +327,7 @@
 			<li>Proyección no acorde a estándares nacionales .</li>
 			<li>Complejo mecanismo para modificar desde el estado la cartografía de google maps.</li>
 			</ul>
-			<p class="lead">
-			De todos los mapas, nos llamó la atención el del Ministerio de Desarrollo social por esta noticia en Infobae:
-			</p>
+			<h3>De todos los mapas, nos llamó la atención el del Ministerio de Desarrollo social por esta noticia en Infobae:</h3>
 			<p class="lead">
 			<a target="_blank"  href="http://www.infobae.com/notas/566425-En-una-pagina-oficial-las-Islas-Malvinas-aparecen-como-Falkland-Islands.html">En una página oficial las Islas Malvinas aparecen como Falkland Islands</a>
 			</p>
@@ -353,19 +351,25 @@
 		Usábamos jQuery por todos lados y empezamos a pensar en un plugin de jQuery que simplificar <strong>sólamente</strong> la inclusión de un mapa del IGN en sitios
 		del Estado y que satisficiera <strong>no más</strong> que lo que vimos en la mayoría de los mapas que relevamos.
 		</p>
-		<p>
+		<p class="lead">
 		Pero optamos por hacer algo intermedio. Un plugin de jQuery que dejar incluir un mapa usando Google Maps API pero que superpusiera las capas base del IGN.
 		</p>
-		<h3>Nos propusimos resolver</h3>
-		<ul class="lead">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		</ul>
+
 		<p class="lead">
 			<a target="_blank"  href="http://ign.gob.ar/argenmap">Argenmap.jQuery V1</a>
+		</p>
+		</section>
+		<section id="argenmapv2" style="clear:both">
+			<div class="page-header">
+				<h2 class="featurette-heading">Argenmap.jQuery v2</h2>
+			</div>
+		<h2>jQuery</h2>
+		<p class="lead">
+		Esta versión de argenmap usa OpenLayers + SIG IGN + jQuery + OSM (type=highway) + Google Satellite. Mantiene la misma API que la versión 1.
+		</p>
+
+		<p class="lead">
+			<a target="_blank"  href="http://ign.gob.ar/argenmap2/argenmap.jquery/documentacion">Argenmap.jQuery V2</a>
 		</p>
 		</section>
 		<br class="clearfix" />
@@ -423,7 +427,7 @@
 				$('.six').argenmap().centro(-32.99634759618687, -60.704299840743474).zoom(10);
 				$('.four').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'SIG IGN 2009',url:'http://sdi.ign.gob.ar/geoserver2/wms',capas:'SIGN'})
 					.centro(-32.99634759618687, -60.704299840743474).zoom(10);
-				$('.five').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'MSC',url:'http://wms.ign.gob.ar/geoserver/wms',capas:'capabase_msc'})
+				$('.two').argenmap({tipo:'blanco'}).agregarCapaWMS({nombre:'MSC',url:'http://wms.ign.gob.ar/geoserver/wms',capas:'capabase_msc'})
 					.centro(-32.99634759618687, -60.704299840743474).zoom(10);
 				
 				$('#estilizacion .nav li').click(function(){
