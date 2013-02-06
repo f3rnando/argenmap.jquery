@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ArgenMap · Documentación</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="bootstrap/css/docs.css" rel="stylesheet">
+    <link href="bootstrap/js/google-code-prettify/prettify.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+		
+		<!-- este js va aca para poder ejecutar codigo inline -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+
+    <!-- Navbar
+    ================================================== -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="./index.html">ArgenMap</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="./index.html">Inicio</a>
+              </li>
+              <li class="dropdown">
+                <a href="./guias.html" class="dropdown-toggle" data-toggle="dropdown">Guías
+								<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="./guias.html#como-empezar">Cómo empezar</a></li>
+									<li><a href="./guias.html#un-mapa">Un mapa</a></li>
+									<li><a href="./guias.html#capas">Capas</a></li>
+									<li><a href="./guias.html#marcadores">Marcadores</a></li>
+								</ul>
+              </li>
+              <li class="active">
+                <a href="./documentacion.html">Documentación</a>
+              </li>
+              <li class="">
+                <a href="./crearMapa.html">Crea un mapa para tu sitio</a>
+              </li>
+              <li class="">
+                <a href="http://github.com/CGastrell/argenmap.jquery">Ver en Github</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<!-- Subhead
+	================================================== -->
+	<header class="jumbotron subhead" id="overview">
+		<div class="container">
+			<h1 class="">ArgenMap v2</h1>
+			<p class="lead">ArgenMap + jQuery + OpenLayers</p>
+		</div>
+	</header>
+
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+		
+      <div class="span3 bs-docs-sidebar">
+        <ul class="nav nav-list bs-docs-sidenav">
+          <li><a href="#argenmap"><i class="icon-chevron-right"></i> .argenmap()</a></li>
+          <li><a href="#centro"><i class="icon-chevron-right"></i> .centro()</a></li>
+          <li><a href="#zoom"><i class="icon-chevron-right"></i> .zoom()</a></li>
+          <li><a href="#agregarCapa"><i class="icon-chevron-right"></i> .agregarCapa</a></li>
+          <!-- <li><a href="#ejemplos"><i class="icon-chevron-right"></i> Más ejemplos</a></li>
+          <li><a href="#what-next"><i class="icon-chevron-right"></i> What next?</a></li> -->
+        </ul>
+      </div>
+			
+			
+      <div class="span9">
+
+        <!-- documentacion
+        ================================================== -->
+        <section id="argenmap">
+          <div class="page-header">
+            <h2>Inicialización</h2>
+          </div>
+					<h3>$().argenmap()</h3>
+          <p class="lead">
+						.argenmap() inicializa el plugin principal de ArgenMap. Crea un mapa y prepara el objeto para recibir
+						cualquier otro método (sub-plugins).
+					</p>
+					<p>Cuando se instancie un mapa con .argenmap(), se creará una instancia de clase
+						ArgenMap y esta quedará almacenada en el objeto jQuery, pudiendo accederse llamando al objeto con
+						el método <code>.data('argenmap')</code>.</p>
+					<p>Puede pasarse un objeto como parámetro para configurar el mapa.</p>
+					<h5>Opciones disponibles</h5>
+					<div class="well">
+						<table class="table ">
+							<thead>
+								<tr>
+									<th>opción</th>
+									<th>tipo</th>
+									<th>valor x defecto</th>
+									<th>descripción</th>
+								</tr>
+							</thead>
+							<tr>
+								<td>centro</td>
+								<td>array(lat:float,lon:float)</td>
+								<td>[-35.00,-57.00]</td>
+								<td>Establece el centro inicial del mapa</td>
+							</tr>
+							<tr>
+								<td>zoom</td>
+								<td>int</td>
+								<td>4</td>
+								<td>Establece el zoom inicial del mapa. Los valores van desde 1 a 19</td>
+							</tr>
+							<tr>
+								<td>tipo</td>
+								<td>string</td>
+								<td>"baseign"</td>
+								<td>Indica qué capa base debe mostrarse inicialmente. Los tipos disponibles son "baseign" y 
+								"satelital"</td>
+							</tr>
+							<tr>
+								<td>proyeccion</td>
+								<td>string</td>
+								<td>"EPSG:3857"</td>
+								<td>Determina la proyección que se usará para el mapa.<br />
+									<span class="label label-warning">NOTA:</span> la capa satelital sólo puede visualizarse usando
+									la proyección por defecto. Cuando no se use EPSG:3857 se desactivará la capa satelital.
+								</td>
+							</tr>
+						</table>
+					</div>
+					<h5>Código</h5>
+					<pre class="prettyprint">
+&lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;mapa2&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;mapa3&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+$(document).ready(function(){
+  //mapa con todas las opciones por defecto
+  $('#mapa').argenmap();
+  //satelital
+  $('#mapa2').argenmap({tipo:'satelital'});
+  //...
+  $('#mapa3').argenmap({
+    centro:[-33.54,-61.28],
+    zoom:9
+  });
+});
+&lt;/script&gt;</pre>
+        </section>
+
+				<section id="centro">
+					<h2>Vista y manipulación</h2>
+					<h3>$().centro(lat,lon)</h3>
+					<p>Centra el mapa en las coordenadas indicadas. Si se llama este método
+					sin parámetros, el método devolverá el centro actual del mapa</p>
+					<div class="alert alert-info">Este método rompe la encadenabilidad de jQuery cuando
+					se ejecute para obtener el centro actual del mapa</div>
+					<div class="well">
+						<table class="table ">
+							<thead>
+								<tr>
+									<th>opción</th>
+									<th>tipo</th>
+									<th>valor x defecto</th>
+									<th>descripción</th>
+								</tr>
+							</thead>
+							<tr>
+								<td>lat</td>
+								<td>float</td>
+								<td>-</td>
+								<td>Latitud</td>
+							</tr>
+							<tr>
+								<td>lon</td>
+								<td>float</td>
+								<td>-</td>
+								<td>Longitud</td>
+							</tr>
+						</table>
+					</div>
+					<h5>Código</h5>
+					<pre class="prettyprint">
+&lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+$(document).ready(function(){
+  $('#mapa').argenmap().centro(-34.62,-58.10);
+
+  $('#mapa').centro(-25.57,-60.32);
+  
+  $('#mapa').centro();//devuelve [-25.57,-60.32]
+});
+&lt;/script&gt;</pre>
+				</section>
+				<section id="zoom">
+					<h3>$().zoom(nivelDeZoom)</h3>
+					<p>Acerca o aleja el mapa al nivel indicado. Si se llama este método
+					sin parámetros, el método devolverá el zoom actual del mapa</p>
+					<div class="alert alert-info">Este método rompe la encadenabilidad de jQuery cuando
+					se ejecute para obtener el zoom actual del mapa</div>
+					<div class="well">
+						<table class="table ">
+							<thead>
+								<tr>
+									<th>opción</th>
+									<th>tipo</th>
+									<th>valor x defecto</th>
+									<th>descripción</th>
+								</tr>
+							</thead>
+							<tr>
+								<td>nivel de zoom</td>
+								<td>int</td>
+								<td>-</td>
+								<td>Nivel de zoom al que se desea visualizar el mapa. Los valores posibles son entre
+								1 y 19</td>
+							</tr>
+						</table>
+					</div>
+					<h5>Código</h5>
+					<pre class="prettyprint">
+&lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+$(document).ready(function(){
+  $('#mapa').argenmap().zoom(7);
+
+  $('#mapa').zoom(12);
+  
+  $('#mapa').zoom();//devuelve 12
+});
+&lt;/script&gt;</pre>
+
+				</section>
+      </div>
+    </div>
+
+  </div>
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>Documentación diseñada con todo el amor del mundo <a href="http://github.com/twitter/bootstrap" target="_blank">Bootstrap</a> por <a href="http://twitter.com/mdo" target="_blank">@mdo</a> and <a href="http://twitter.com/fat" target="_blank">@fat</a>.</p>
+        <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+        <p>Icons from <a href="http://glyphicons.com">Glyphicons Free</a>, licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+				<!--
+        <ul class="footer-links">
+          <li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
+          <li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
+        </ul>
+				-->
+      </div>
+    </footer>
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/google-code-prettify/prettify.js"></script>
+
+    <script src="http://mapa.ign.gob.ar/cg/OpenLayers-2.12/build/OpenLayers-argenmap-closure.js"></script>
+    <script src="https://raw.github.com/CGastrell/argenmap.jquery/master/argenmap.jquery.js"></script>
+    <!-- Placed at the end of the document so the pages load faster 
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="bootstrap/js/bootstrap-alert.js"></script>
+    <script src="bootstrap/js/bootstrap-modal.js"></script>
+    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="bootstrap/js/bootstrap-tab.js"></script>
+    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="bootstrap/js/bootstrap-popover.js"></script>
+    <script src="bootstrap/js/bootstrap-button.js"></script>
+    <script src="bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="bootstrap/js/bootstrap-affix.js"></script>
+    <script src="bootstrap/js/application.js"></script>
+		-->
+		
+    <!-- Codigo para la pagina
+    ================================================== -->
+		<script>
+			$(document).ready(function(){
+				var $window = $(window);
+				// side bar
+				$('.bs-docs-sidenav').affix({
+					offset: {
+						top: function () { return $window.width() <= 980 ? 290 : 210 }
+					, bottom: 270
+					}
+				})
+
+				// make code pretty
+				window.prettyPrint && prettyPrint()
+		});
+		</script>
+
+    <!-- Analytics
+    ================================================== -->
+		<script type="text/javascript">
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-689568-24']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+
+  </body>
+</html>
