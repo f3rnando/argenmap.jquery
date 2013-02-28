@@ -148,8 +148,8 @@
 								<td>tipo</td>
 								<td>string</td>
 								<td>"baseign"</td>
-								<td>Indica qué capa base debe mostrarse inicialmente. Los tipos disponibles son "baseign" y 
-								"satelital"</td>
+								<td>Indica qué capa base debe mostrarse inicialmente. Los tipos disponibles son "baseign", 
+								"satelital" y "blanco"</td>
 							</tr>
 							<tr>
 								<td>proyeccion</td>
@@ -218,11 +218,14 @@ $(document).ready(function(){
 &lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
 $(document).ready(function(){
-  $('#mapa').argenmap().centro(-34.62,-58.10);
+  //inicializar el mapa
+  $('#mapa').argenmap();
 
+  //establecer nuevo centro
   $('#mapa').centro(-25.57,-60.32);
   
-  $('#mapa').centro();//devuelve [-25.57,-60.32]
+  //pedido del centro actual del mapa, devuelve [-25.57,-60.32]
+  $('#mapa').centro();
 });
 &lt;/script&gt;</pre>
 				</section><!-- centro -->
@@ -257,11 +260,14 @@ $(document).ready(function(){
 &lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
 $(document).ready(function(){
-  $('#mapa').argenmap().zoom(7);
+  //inicializar el mapa
+  $('#mapa').argenmap();
 
+  //establecer nuevo nivel de zoom
   $('#mapa').zoom(12);
   
-  $('#mapa').zoom();//devuelve 12
+  //pedido del nivel de zoom actual del mapa, devuelve 12
+  $('#mapa').zoom();
 });
 &lt;/script&gt;</pre>
 				</section><!-- zoom -->
@@ -312,6 +318,13 @@ $(document).ready(function(){
 								<td>Tipo de capa, "wms" o "kml". Vea <a href="#agregarCapaWMS">agregarCapaWMS()</a> o 
 								<a href="#agregarCapaKML">agregarCapaKML()</a> para entender las opciones de cada una.</td>
 							</tr>
+							<tr>
+								<td>...</td>
+								<td>objeto</td>
+								<td>-</td>
+								<td>Vea <a href="#agregarCapaWMS">$().agregarCapaWMS()</a> o 
+								<a href="#agregarCapaKML">$().agregarCapaKML()</a> para entender las opciones de cada una.</td>
+							</tr>
 						</table>
 					</div>
 					<h5>Código</h5>
@@ -319,11 +332,14 @@ $(document).ready(function(){
 &lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
 $(document).ready(function(){
-  $('#mapa').argenmap().zoom(7);
+  //inicialización con mapa vacío
+  $('#mapa').argenmap({tipo:"blanco"});
 
-  $('#mapa').zoom(12);
+  //agregado de capa base IGN
+  $('#mapa').agregarCapa('baseIGN');
   
-  $('#mapa').zoom();//devuelve 12
+  //agregado de capa satelital IGN
+  $('#mapa').agregarCapa('satelital');
 });
 &lt;/script&gt;</pre>
 
@@ -397,11 +413,71 @@ $(document).ready(function(){
 &lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
 $(document).ready(function(){
-  $('#mapa').argenmap().zoom(7);
+  //inicializar el mapa
+  $('#mapa').argenmap();
 
-  $('#mapa').zoom(12);
-  
-  $('#mapa').zoom();//devuelve 12
+  //capa de ríos del IGN
+  $('#mapa').agregarCapaWMS({
+    url: 'http://www.ign.gob.ar/wms',
+    nombre: 'Ríos IGN',
+    capas: 'afl',
+    formato: 'image/png',
+    transparente: true
+  });
+});
+&lt;/script&gt;</pre>
+
+				</section><!-- agregarCapaWMS -->
+				
+				<section id="agregarCapaKML">
+					<h3>$().agregarCapaKML(opciones)</h3>
+					<p>Agrega una capa en formato KML al mapa.</p>
+					<p><span class="label label-warning">Atención:</span> El archivo KML debe estar en el mismo
+					dominio, de lo contrario recibirá un error de
+					<a href="http://es.wikipedia.org/wiki/Pol%C3%ADtica_del_mismo_origen"><strong><em>Política del
+					mismo origen (Same origin policy)</em></strong></a>.</p>
+					<p></p>
+					<h5>Opciones WMS</h5>
+					<div class="well">
+						<table class="table ">
+							<thead>
+								<tr>
+									<th>opción</th>
+									<th>tipo</th>
+									<th>valor x defecto</th>
+									<th>descripción</th>
+								</tr>
+							</thead>
+							<tr>
+								<td>url</td>
+								<td>string</td>
+								<td>-</td>
+								<td>La URL del archivo KML a agregar.</td>
+							</tr>
+							<tr>
+								<td>nombre</td>
+								<td>string</td>
+								<td>-</td>
+								<td>Nombre de la capa a agregar. Este es el nombre que
+								aparecerá en el selector de capas. También será la referencia
+								para identificarla con llamadas a $.removerCapa()</td>
+							</tr>
+						</table>
+					</div>
+					<h5>Código</h5>
+					<pre class="prettyprint">
+&lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+$(document).ready(function(){
+	//inicializar el mapa
+  $('#mapa').argenmap();
+
+  //código para agregar capa KML
+  $('#mapa').agregarCapaKML({
+    url: 'http://dominio.com.ar/puntos.kml',
+    nombre: 'Capa de puntos KML'
+  });
+
 });
 &lt;/script&gt;</pre>
 
