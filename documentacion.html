@@ -47,16 +47,8 @@
               <li class="">
                 <a href="./index.html">Inicio</a>
               </li>
-              <li class="dropdown">
-                <a href="./guias.html" class="dropdown-toggle" data-toggle="dropdown">Guías
-								<b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="./guias.html#como-empezar">Cómo empezar</a></li>
-									<li><a href="./guias.html#un-mapa">Un mapa</a></li>
-									<li><a href="./guias.html#capas">Capas</a></li>
-									<li><a href="./guias.html#marcadores">Marcadores</a></li>
-								</ul>
+              <li class="">
+                <a href="./guias.html">Guías</a>
               </li>
               <li class="active">
                 <a href="./documentacion.html">Documentación</a>
@@ -83,31 +75,30 @@
 	</header>
 
 
-  <div class="container">
+  <div class="container-fluid">
 
-    <!-- Docs nav
-    ================================================== -->
-    <div class="row">
+    <!-- Docs nav -->
+    <div class="row-fluid">
 		
-      <div class="span3 bs-docs-sidebar">
+       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav">
+        	<li class="list-header">Inicialización</li>
           <li><a href="#argenmap"><i class="icon-chevron-right"></i> .argenmap()</a></li>
+          <li class="list-divider">Manipulación</li>
           <li><a href="#centro"><i class="icon-chevron-right"></i> .centro()</a></li>
           <li><a href="#zoom"><i class="icon-chevron-right"></i> .zoom()</a></li>
+          <li class="list-divider">Capas</li>
+          <li><a href="#capaBase"><i class="icon-chevron-right"></i> .capaBase()</a></li>
           <li><a href="#agregarCapa"><i class="icon-chevron-right"></i> .agregarCapa()</a></li>
           <li><a href="#agregarCapaWMS"><i class="icon-chevron-right"></i> .agregarCapaWMS()</a></li>
           <li><a href="#agregarCapaKML"><i class="icon-chevron-right"></i> .agregarCapaKML()</a></li>
           <li><a href="#agregarCapaBaseWMS"><i class="icon-chevron-right"></i> .agregarCapaBaseWMS()</a></li>
-          <!-- <li><a href="#ejemplos"><i class="icon-chevron-right"></i> Más ejemplos</a></li>
-          <li><a href="#what-next"><i class="icon-chevron-right"></i> What next?</a></li> -->
         </ul>
       </div>
 			
-			
       <div class="span9">
 
-        <!-- documentacion
-        ================================================== -->
+        <!-- documentacion -->
         <section id="argenmap">
           <div class="page-header">
             <h2>Inicialización</h2>
@@ -271,6 +262,47 @@ $(document).ready(function(){
 });
 &lt;/script&gt;</pre>
 				</section><!-- zoom -->
+				<section id="capaBase">
+					<h3>$().capaBase(capa) - COMPLETAR</h3>
+					<p>Acerca o aleja el mapa al nivel indicado. Si se llama este método
+					sin parámetros, el método devolverá el zoom actual del mapa</p>
+					<div class="alert alert-info">Este método rompe la encadenabilidad de jQuery cuando
+					se ejecute para obtener el zoom actual del mapa</div>
+					<div class="well">
+						<table class="table ">
+							<thead>
+								<tr>
+									<th>opción</th>
+									<th>tipo</th>
+									<th>valor x defecto</th>
+									<th>descripción</th>
+								</tr>
+							</thead>
+							<tr>
+								<td>nivel de zoom</td>
+								<td>int</td>
+								<td>-</td>
+								<td>Nivel de zoom al que se desea visualizar el mapa. Los valores posibles son entre
+								1 y 19</td>
+							</tr>
+						</table>
+					</div>
+					<h5>Código</h5>
+					<pre class="prettyprint">
+&lt;div id=&quot;mapa&quot; style=&quot;height:400px&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+$(document).ready(function(){
+  //inicializar el mapa
+  $('#mapa').argenmap();
+
+  //establecer nuevo nivel de zoom
+  $('#mapa').zoom(12);
+  
+  //pedido del nivel de zoom actual del mapa, devuelve 12
+  $('#mapa').zoom();
+});
+&lt;/script&gt;</pre>
+				</section><!-- capaBase -->
 				
 				<section id="agregarCapa">
 					<h3>$().agregarCapa(opciones)</h3>
