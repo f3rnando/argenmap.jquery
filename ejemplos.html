@@ -292,6 +292,7 @@ $('#mapa').argenmap().capaBase('Satélite');
 			<div class="row-fluid">
 				<h2>Ejemplos con marcadores</h2>
 			</div>
+			
 			<h3>Un marcador al centro</h3>
 			<div class="row-fluid">
 				<div class="span6">
@@ -321,6 +322,201 @@ $('#mapa').argenmap().agregarMarcador();
 					</div>
 				</div>
 			</div>
+
+			<h3>Un marcador con popup</h3>
+			<div class="row-fluid">
+				<div class="span6">
+					<h4>Código</h4>
+					<div class="bs-docs-example">
+
+<pre class="prettyprint">
+&lt;script&gt;
+//un mapa en una sola línea de código :)
+$('#mapa').argenmap()
+  .centro(-32.91110160485335,-68.83364868164072)
+  .zoom(10);
+$('#mapa').agregarMarcador({
+  lat: -32.91110160485335,
+  lon: -68.83364868164072,
+  contenido: '&lt;h3&gt;Hola mundo!&lt;/h3&gt;Soy un marcador pinup!',
+  nombre: 'marcador1'
+});
+<span class="nocode"><a id="simples12" class="btn btn-mini btn-primary" href="#simples12">Ejecutar ejemplo</a></span>
+&lt;/script&gt;</pre>
+						<script>
+							$('#simples12').click(function(){
+								$('#simplespopup-resultado').argenmap().centro(-32.91110160485335,-68.83364868164072).zoom(10);
+								$('#simplespopup-resultado').agregarMarcador({
+								  lat: -32.91110160485335,
+								  lon: -68.83364868164072,
+								  contenido: '<h3>Hola mundo!</h3>No soy sólo un popup vacío, tengo sentimientos',
+								  nombre: 'marcador1'
+								});
+								return false;
+							});
+						</script>
+					</div>
+				</div>
+				<div class="span6">
+					<h4>Resultado</h4>
+					<div class="bs-docs-resultado">
+						<div id="simplespopup-resultado" class="resultado"></div>
+					</div>
+				</div>
+			</div>
+
+			<h3>Varios marcadores</h3>
+			<div class="row-fluid">
+				<div class="span6">
+					<h4>Código</h4>
+					<div class="bs-docs-example">
+
+<pre class="prettyprint">
+&lt;script&gt;
+//un mapa en una sola línea de código :)
+$('#mapa').argenmap();
+
+//creamos los marcadores en un array
+var marcadores = [
+  {lat: -25.695278, lon: -54.436667, contenido:'Cataratas del Iguazú!'},
+  {lat: -34.05, lon: -59.2, contenido:'Atucha: central eléctrica'},
+  {lat: -27.31, lon: -66.608617, contenido:'Minera Lumbrera: buena mina'},
+  {lat: -32.911,lon: -68.833, contenido:'No soy solo un marcador vacío, tengo sentimientos',icono:'hueco'}
+];
+$('#mapa').agregarMarcadores(marcadores);
+<span class="nocode"><a id="simples13" class="btn btn-mini btn-primary" href="#simples13">Ejecutar ejemplo</a></span>
+&lt;/script&gt;</pre>
+						<script>
+							$('#simples13').click(function(){
+								$('#simplesmarcadores-resultado').argenmap();
+								var marcadores = [
+								  {lat: -25.695278, lon: -54.436667, contenido:'Cataratas del Iguazú!'},
+								  {lat: -34.05, lon: -59.2, contenido:'Atucha: central eléctrica'},
+								  {lat: -27.31,  lon: -66.608617, contenido:'Minera Lumbrera: buena mina'},
+								  {lat: -32.911,lon: -68.833, contenido:'No soy solo un marcador vacío, tengo sentimientos',icono:'hueco'}
+								];
+								$('#simplesmarcadores-resultado').agregarMarcadores(marcadores);
+								return false;
+							});
+						</script>
+					</div>
+				</div>
+				<div class="span6">
+					<h4>Resultado</h4>
+					<div class="bs-docs-resultado">
+						<div id="simplesmarcadores-resultado" class="resultado"></div>
+					</div>
+				</div>
+			</div>
+
+        </section>
+
+
+        <!-- ejemplos datos
+        ================================================== -->
+        <section id="datos">
+			<div class="row-fluid">
+				<h2>Ejemplos con datos externos</h2>
+			</div>
+			
+			<h3>Superponiendo capa WMS</h3>
+			<div class="row-fluid">
+				<div class="span6">
+					<h4>Código</h4>
+					<div class="bs-docs-example">
+
+<pre class="prettyprint">
+&lt;script&gt;
+//un mapa en una sola línea de código :)
+$('#mapa').centro(-25.9788, -59.4379).zoom(7);
+
+//configuración para una capa del WMS de Formosa
+var formosa = {
+  url:'http://idef.formosa.gob.ar/servicios/wms?',
+  capas:'mce_prov_escuelas',
+  nombre: 'Escuelas de la provincia de Formosa'
+};
+$('#mapa').agregarCapaWMS( formosa );
+<span class="nocode"><a id="datos1" class="btn btn-mini btn-primary" href="#datos1">Ejecutar ejemplo</a></span>
+&lt;/script&gt;</pre>
+						<script>
+							$('#datos1').click(function(){
+								$('#datoswms-resultado').argenmap().centro(-25.9788, -59.4379).zoom(7);
+								var formosa = {
+								  url:'http://idef.formosa.gob.ar/servicios/wms?',
+								  capas:'mce_prov_escuelas',
+								  nombre: 'Escuelas de la provincia de Formosa'
+								};
+								$('#datoswms-resultado').agregarCapaWMS( formosa );
+								return false;
+							});
+						</script>
+					</div>
+				</div>
+				<div class="span6">
+					<h4>Resultado</h4>
+					<div class="bs-docs-resultado">
+						<div id="datoswms-resultado" class="resultado"></div>
+					</div>
+				</div>
+			</div>
+
+			<h3>Superponiendo capas KML publicadas</h3>
+			<div class="row-fluid">
+				<div class="span6">
+					<h4>Código</h4>
+					<div class="bs-docs-example">
+
+<pre class="prettyprint">
+&lt;script&gt;
+//un mapa en una sola línea de código :)
+$('#mapa').centro(-25.9788, -59.4379).zoom(7);
+
+//configuración para una capa del WMS de Formosa
+var arroyos = {
+  url:'http://cgastrell.github.io/argenmap.jquery/arroyos.kml',
+  nombre: 'Cuencas de arroyos'
+};
+var inundaciones = {
+  url:'http://cgastrell.github.io/argenmap.jquery/inundacion.kml',
+  nombre: 'Zonas inundadas'
+};
+var topografia = {
+  url:'http://cgastrell.github.io/argenmap.jquery/topografia.kml',
+  nombre: 'Curvas de nivel'
+};
+$('#mapa').agregarCapaKML( inundacion ).agregarCapaKML(arroyos).agregarCapaKML(topografia);
+<span class="nocode"><a id="datos2" class="btn btn-mini btn-primary" href="#datos2">Ejecutar ejemplo</a></span>
+&lt;/script&gt;</pre>
+						<script>
+							$('#datos2').click(function(){
+								$('#datoskml-resultado').argenmap().centro(-25.9788, -59.4379).zoom(7);
+								var arroyos = {
+								  url:'http://cgastrell.github.io/argenmap.jquery/arroyos.kml',
+								  nombre: 'Cuencas de arroyos'
+								};
+								var inundacion = {
+								  url:'http://cgastrell.github.io/argenmap.jquery/inundacion.kml',
+								  nombre: 'Zonas inundadas'
+								};
+								var topografia = {
+								  url:'http://cgastrell.github.io/argenmap.jquery/topografia.kml',
+								  nombre: 'Curvas de nivel'
+								};
+								$('#datoskml-resultado').agregarCapaKML( inundacion ).agregarCapaKML(arroyos).agregarCapaKML(topografia);
+								return false;
+							});
+						</script>
+					</div>
+				</div>
+				<div class="span6">
+					<h4>Resultado</h4>
+					<div class="bs-docs-resultado">
+						<div id="datoskml-resultado" class="resultado"></div>
+					</div>
+				</div>
+			</div>
+
 
         </section>
 
