@@ -566,7 +566,7 @@ h2 + .row {
 .bs-docs-resultado {
   position: relative;
   margin: 15px 0;
-  padding: 39px 19px 14px;
+  padding: 39px 2px 14px;
   *padding-top: 19px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -625,7 +625,7 @@ border: 1px solid rgba(0, 0, 0, 0.2);
 .bs-docs-example {
   position: relative;
   margin: 15px 0;
-  padding: 39px 19px 14px;
+  padding: 39px 2px 14px;
   *padding-top: 19px;
   background-color: #fff;
   border: 1px solid #ddd;
