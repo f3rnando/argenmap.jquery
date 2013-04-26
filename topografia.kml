@@ -3,12 +3,12 @@
 <Document>
   <!-- Begin Style Definitions -->
   <Style id="area1">
-    <LineStyle>
+    <!--LineStyle>
       <color>FF664711</color>
       <width>1</width>
-    </LineStyle>
+    </LineStyle-->
     <PolyStyle>
-      <color>BF000000</color>
+      <color>FF664711</color>
       <fill>0</fill>
       <outline>1</outline>
     </PolyStyle>

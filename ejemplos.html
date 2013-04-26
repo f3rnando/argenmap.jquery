@@ -485,12 +485,14 @@ var topografia = {
   url:'http://cgastrell.github.io/argenmap.jquery/topografia.kml',
   nombre: 'Curvas de nivel'
 };
-$('#mapa').agregarCapaKML( inundacion ).agregarCapaKML(arroyos).agregarCapaKML(topografia);
+$('#mapa').agregarCapaKML( inundacion )
+  .agregarCapaKML(arroyos)
+  .agregarCapaKML(topografia);
 <span class="nocode"><a id="datos2" class="btn btn-mini btn-primary" href="#datos2">Ejecutar ejemplo</a></span>
 &lt;/script&gt;</pre>
 						<script>
 							$('#datos2').click(function(){
-								$('#datoskml-resultado').argenmap().centro(-25.9788, -59.4379).zoom(7);
+								$('#datoskml-resultado').argenmap().centro(-34.92358781656045, -57.92985480346745).zoom(12);
 								var arroyos = {
 								  url:'http://cgastrell.github.io/argenmap.jquery/arroyos.kml',
 								  nombre: 'Cuencas de arroyos'
@@ -512,7 +514,7 @@ $('#mapa').agregarCapaKML( inundacion ).agregarCapaKML(arroyos).agregarCapaKML(t
 				<div class="span6">
 					<h4>Resultado</h4>
 					<div class="bs-docs-resultado">
-						<div id="datoskml-resultado" class="resultado"></div>
+						<div id="datoskml-resultado" class="resultado" style="height:450px"></div>
 					</div>
 				</div>
 			</div>
