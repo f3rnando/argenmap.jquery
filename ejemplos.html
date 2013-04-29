@@ -349,7 +349,7 @@ $('#mapa').agregarMarcador({
 								$('#simplespopup-resultado').agregarMarcador({
 								  lat: -32.91110160485335,
 								  lon: -68.83364868164072,
-								  contenido: '<h3>Hola mundo!</h3>No soy sólo un popup vacío, tengo sentimientos',
+								  contenido: '<h3>Hola mundo!</h3>Soy un marcador pinup!',
 								  nombre: 'marcador1'
 								});
 								return false;
@@ -494,15 +494,15 @@ $('#mapa').agregarCapaKML( inundacion )
 							$('#datos2').click(function(){
 								$('#datoskml-resultado').argenmap().centro(-34.92358781656045, -57.92985480346745).zoom(12);
 								var arroyos = {
-								  url:'http://cgastrell.github.io/argenmap.jquery/arroyos.kml',
+								  url:'arroyos.kml',
 								  nombre: 'Cuencas de arroyos'
 								};
 								var inundacion = {
-								  url:'http://cgastrell.github.io/argenmap.jquery/inundacion.kml',
+								  url:'inundacion.kml',
 								  nombre: 'Zonas inundadas'
 								};
 								var topografia = {
-								  url:'http://cgastrell.github.io/argenmap.jquery/topografia.kml',
+								  url:'topografia.kml',
 								  nombre: 'Curvas de nivel'
 								};
 								$('#datoskml-resultado').agregarCapaKML( inundacion ).agregarCapaKML(arroyos).agregarCapaKML(topografia);
